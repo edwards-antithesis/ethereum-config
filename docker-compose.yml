@@ -1,0 +1,494 @@
+version: '3'
+services:
+  ganache:
+    image: docker.io/trufflesuite/ganache-cli
+    command: --accounts 40 -e 1000 --networkId 4242 --chainId 4242 -b 3
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.2
+
+  boot:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.3
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+      - /opt/antithesis/lib/libinstrumentation_determ.so:/libvoidstar/libvoidstar.so
+    working_dir: /lighthouse/scripts/local_testnet
+    depends_on: 
+      - ganache
+    entrypoint: /lighthouse/scripts/local_testnet/a_start.sh
+
+  ###################################################
+  beacon1:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.4
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+      - /opt/antithesis/lib/libinstrumentation_determ.so:/libvoidstar/libvoidstar.so
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "400"
+      - /root/.lighthouse/testnet/node_1
+      - "9000"
+      - "8000"
+      - "10.0.20.4"
+      - http://10.0.20.4:8000
+
+  ##################################################
+  beacon2:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.6
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "600"
+      - /root/.lighthouse/testnet/node_2
+      - "9002"
+      - "8002"
+      - "10.0.20.6"
+      - http://10.0.20.6:8002
+
+  ##################################################
+  beacon3:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.8
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "800"
+      - /root/.lighthouse/testnet/node_3
+      - "9003"
+      - "8003"
+      - "10.0.20.8"
+      - http://10.0.20.8:8003
+
+  ##################################################
+  beacon4:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.10
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "1000"
+      - /root/.lighthouse/testnet/node_4
+      - "9004"
+      - "8004"
+      - "10.0.20.10"
+      - http://10.0.20.10:8004
+
+  ##################################################
+  beacon5:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.12
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "1200"
+      - /root/.lighthouse/testnet/node_5
+      - "9005"
+      - "8005"
+      - "10.0.20.12"
+      - http://10.0.20.12:8005
+
+  ##################################################
+  beacon6:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.14
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "1400"
+      - /root/.lighthouse/testnet/node_6
+      - "9006"
+      - "8006"
+      - "10.0.20.14"
+      - http://10.0.20.14:8006
+
+  ##################################################
+  beacon7:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.16
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "1600"
+      - /root/.lighthouse/testnet/node_7
+      - "9007"
+      - "8007"
+      - "10.0.20.16"
+      - http://10.0.20.16:8007
+
+  ##################################################
+  beacon8:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.18
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "1800"
+      - /root/.lighthouse/testnet/node_8
+      - "9008"
+      - "8008"
+      - "10.0.20.18"
+      - http://10.0.20.18:8008
+
+  ##################################################
+  beacon9:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.20
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "2000"
+      - /root/.lighthouse/testnet/node_9
+      - "9009"
+      - "8009"
+      - "10.0.20.20"
+      - http://10.0.20.20:8009
+
+      ##################################################
+  beacon10:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.22
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "2200"
+      - /root/.lighthouse/testnet/node_10
+      - "9010"
+      - "8010"
+      - "10.0.20.22"
+      - http://10.0.20.22:8010
+
+            ##################################################
+  beacon11:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.24
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "2400"
+      - /root/.lighthouse/testnet/node_11
+      - "9011"
+      - "8011"
+      - "10.0.20.24"
+      - http://10.0.20.24:8011
+
+      ##################################################
+  beacon12:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.26
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "2600"
+      - /root/.lighthouse/testnet/node_12
+      - "9012"
+      - "8012"
+      - "10.0.20.26"
+      - http://10.0.20.26:8012
+
+      ##################################################
+  beacon13:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.28
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "2800"
+      - /root/.lighthouse/testnet/node_13
+      - "9013"
+      - "8013"
+      - "10.0.20.28"
+      - http://10.0.20.28:8013
+
+      ##################################################
+  beacon14:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.30
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "3000"
+      - /root/.lighthouse/testnet/node_14
+      - "9014"
+      - "8014"
+      - "10.0.20.30"
+      - http://10.0.20.30:8014
+
+      ##################################################
+  beacon15:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.32
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "3200"
+      - /root/.lighthouse/testnet/node_15
+      - "9015"
+      - "8015"
+      - "10.0.20.32"
+      - http://10.0.20.32:8015
+
+      ##################################################
+  beacon16:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.34
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "3400"
+      - /root/.lighthouse/testnet/node_16
+      - "9016"
+      - "8016"
+      - "10.0.20.34"
+      - http://10.0.20.34:8016
+
+      ##################################################
+  beacon17:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.36
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "3600"
+      - /root/.lighthouse/testnet/node_17
+      - "9017"
+      - "8017"
+      - "10.0.20.36"
+      - http://10.0.20.36:8017
+
+      ##################################################
+  beacon18:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.38
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "3800"
+      - /root/.lighthouse/testnet/node_18
+      - "9018"
+      - "8018"
+      - "10.0.20.38"
+      - http://10.0.20.38:8018
+
+      ##################################################
+  beacon19:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.40
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "4000"
+      - /root/.lighthouse/testnet/node_19
+      - "9019"
+      - "8019"
+      - "10.0.20.40"
+      - http://10.0.20.40:8019
+
+  ##################################################
+  
+  beacon20:
+    image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse-libvoidstar-lcli
+    environment:
+      - ANT_ENABLE_PAUSE_INJECTION=1
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.42
+    volumes:
+      - /opt/antithesis/data:/root/.lighthouse/testnet
+      - /opt/ethereum/lighthouse/scripts/local_testnet:/lighthouse/scripts/local_testnet
+    depends_on: 
+      - boot
+    entrypoint:
+      - /lighthouse/scripts/local_testnet/a_beacon.sh
+      - "4200"
+      - /root/.lighthouse/testnet/node_20
+      - "9020"
+      - "8020"
+      - "10.0.20.42"
+      - http://10.0.20.42:8020
+
+  ###################################################
+
+  workload:
+    container_name: workload    
+    image: docker.io/nyurik/alpine-python3-requests
+    networks:
+      eth-net:
+        ipv4_address: 10.0.20.132
+    volumes:
+      - /opt/ethereum:/opt/ethereum
+      - /opt/ethereum/lighthouse:/lighthouse
+    depends_on: 
+      - boot
+      - beacon1
+    entrypoint:
+      - python3
+      - /opt/ethereum/wrapper.py
+      - --genesis-retry-delay=20
+      - --slot-retry-delay=120
+      - 10.0.20.4:8000
+      - /lighthouse/scripts/local_testnet/workload.py
+
+networks:
+  eth-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.0.20.0/24
