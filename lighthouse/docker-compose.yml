@@ -1,4 +1,3 @@
-version: '3'
 services:
   ganache:
     image: docker.io/trufflesuite/ganache-cli
@@ -15,7 +14,7 @@ services:
         ipv4_address: 10.0.20.3
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     working_dir: /lighthouse/scripts/local_testnet
     depends_on: 
       - ganache
@@ -31,7 +30,7 @@ services:
         ipv4_address: 10.0.20.4
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -50,7 +49,7 @@ services:
       - ANT_ENABLE_PAUSE_INJECTION=1
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse    
+      - /opt/config/scripts:/lighthouse/scripts    
     depends_on: 
       - boot        
     networks:
@@ -75,7 +74,7 @@ services:
         ipv4_address: 10.0.20.8
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -97,7 +96,7 @@ services:
         ipv4_address: 10.0.20.10
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -119,7 +118,7 @@ services:
         ipv4_address: 10.0.20.12
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -141,7 +140,7 @@ services:
         ipv4_address: 10.0.20.14
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -163,7 +162,7 @@ services:
         ipv4_address: 10.0.20.16
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -185,7 +184,7 @@ services:
         ipv4_address: 10.0.20.18
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -207,7 +206,7 @@ services:
         ipv4_address: 10.0.20.20
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -229,7 +228,7 @@ services:
         ipv4_address: 10.0.20.22
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -251,7 +250,7 @@ services:
         ipv4_address: 10.0.20.24
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -273,7 +272,7 @@ services:
         ipv4_address: 10.0.20.26
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -295,7 +294,7 @@ services:
         ipv4_address: 10.0.20.28
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -317,7 +316,7 @@ services:
         ipv4_address: 10.0.20.30
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -339,7 +338,7 @@ services:
         ipv4_address: 10.0.20.32
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -361,7 +360,7 @@ services:
         ipv4_address: 10.0.20.34
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -383,7 +382,7 @@ services:
         ipv4_address: 10.0.20.36
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -405,7 +404,7 @@ services:
         ipv4_address: 10.0.20.38
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -427,7 +426,7 @@ services:
         ipv4_address: 10.0.20.40
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -450,7 +449,7 @@ services:
         ipv4_address: 10.0.20.42
     volumes:
       - /opt/config/data:/root/.lighthouse/testnet
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
     entrypoint:
@@ -472,7 +471,7 @@ services:
         ipv4_address: 10.0.20.132
     volumes:
       - /opt/config:/opt/config
-      - /opt/config/lighthouse:/lighthouse
+      - /opt/config/scripts:/lighthouse/scripts
     depends_on: 
       - boot
       - beacon1

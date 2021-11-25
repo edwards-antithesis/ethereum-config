@@ -1,3 +1,3 @@
 FROM scratch
-COPY scripts /
+COPY scripts /scripts
 COPY docker-compose.yml /
