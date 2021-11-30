@@ -8,7 +8,6 @@ services:
 
   boot:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
-
     networks:
       eth-net:
         ipv4_address: 10.0.20.3
