@@ -10,7 +10,7 @@
 source /lighthouse/scripts/local_testnet/vars.env
 
 exec /usr/local/bin/lighthouse \
-	--debug-level debug \
+	--debug-level $DEBUG_LEVEL \
 	bn \
 	--datadir $1 \
 	--testnet-dir $TESTNET_DIR \

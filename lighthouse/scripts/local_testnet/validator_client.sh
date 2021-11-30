@@ -8,8 +8,6 @@
 
 source /lighthouse/scripts/local_testnet/vars.env
 
-DEBUG_LEVEL=${3:-info}
-
 exec /usr/local/bin/lighthouse \
 	--debug-level $DEBUG_LEVEL \
 	vc \
