@@ -1,7 +1,7 @@
 services:
   ganache:
     image: docker.io/trufflesuite/ganache-cli
-    command: --accounts 40 -e 1000 --networkId 4242 --chainId 4242 -b 3
+    command: --accounts 40 -e 1000 --networkId 4242 --chainId 4242 -b 3 --quiet
     networks:
       eth-net:
         ipv4_address: 10.0.20.2
@@ -56,7 +56,7 @@ services:
         ipv4_address: 10.0.20.6
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "600"
+      - "460"
       - /root/.lighthouse/testnet/node_2
       - "9002"
       - "8002"
@@ -78,7 +78,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "800"
+      - "520"
       - /root/.lighthouse/testnet/node_3
       - "9003"
       - "8003"
@@ -100,7 +100,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "1000"
+      - "580"
       - /root/.lighthouse/testnet/node_4
       - "9004"
       - "8004"
@@ -122,7 +122,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "1200"
+      - "640"
       - /root/.lighthouse/testnet/node_5
       - "9005"
       - "8005"
@@ -144,7 +144,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "1400"
+      - "700"
       - /root/.lighthouse/testnet/node_6
       - "9006"
       - "8006"
@@ -166,7 +166,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "1600"
+      - "760"
       - /root/.lighthouse/testnet/node_7
       - "9007"
       - "8007"
@@ -188,7 +188,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "1800"
+      - "820"
       - /root/.lighthouse/testnet/node_8
       - "9008"
       - "8008"
@@ -210,7 +210,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "2000"
+      - "880"
       - /root/.lighthouse/testnet/node_9
       - "9009"
       - "8009"
@@ -221,7 +221,7 @@ services:
   beacon10:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.22
@@ -232,7 +232,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "2200"
+      - "940"
       - /root/.lighthouse/testnet/node_10
       - "9010"
       - "8010"
@@ -243,7 +243,7 @@ services:
   beacon11:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.24
@@ -254,7 +254,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "2400"
+      - "1000"
       - /root/.lighthouse/testnet/node_11
       - "9011"
       - "8011"
@@ -265,7 +265,7 @@ services:
   beacon12:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.26
@@ -276,7 +276,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "2600"
+      - "1060"
       - /root/.lighthouse/testnet/node_12
       - "9012"
       - "8012"
@@ -287,7 +287,7 @@ services:
   beacon13:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.28
@@ -298,7 +298,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "2800"
+      - "1120"
       - /root/.lighthouse/testnet/node_13
       - "9013"
       - "8013"
@@ -309,7 +309,7 @@ services:
   beacon14:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.30
@@ -320,7 +320,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "3000"
+      - "1180"
       - /root/.lighthouse/testnet/node_14
       - "9014"
       - "8014"
@@ -331,7 +331,7 @@ services:
   beacon15:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.32
@@ -342,7 +342,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "3200"
+      - "1240"
       - /root/.lighthouse/testnet/node_15
       - "9015"
       - "8015"
@@ -353,7 +353,7 @@ services:
   beacon16:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.34
@@ -364,7 +364,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "3400"
+      - "1300"
       - /root/.lighthouse/testnet/node_16
       - "9016"
       - "8016"
@@ -375,7 +375,7 @@ services:
   beacon17:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.36
@@ -386,7 +386,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "3600"
+      - "1360"
       - /root/.lighthouse/testnet/node_17
       - "9017"
       - "8017"
@@ -397,7 +397,7 @@ services:
   beacon18:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.38
@@ -408,7 +408,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "3800"
+      - "1420"
       - /root/.lighthouse/testnet/node_18
       - "9018"
       - "8018"
@@ -419,7 +419,7 @@ services:
   beacon19:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.40
@@ -430,7 +430,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "4000"
+      - "1480"
       - /root/.lighthouse/testnet/node_19
       - "9019"
       - "8019"
@@ -442,7 +442,7 @@ services:
   beacon20:
     image: us-central1-docker.pkg.dev/molten-verve-216720/ethereum-repository/lighthouse
     environment:
-      - ANT_ENABLE_PAUSE_INJECTION=1
+      - ANT_ENABLE_PAUSE_INJECTION=0
     networks:
       eth-net:
         ipv4_address: 10.0.20.42
@@ -453,7 +453,7 @@ services:
       - boot
     entrypoint:
       - /lighthouse/scripts/local_testnet/a_beacon.sh
-      - "4200"
+      - "1540"
       - /root/.lighthouse/testnet/node_20
       - "9020"
       - "8020"
@@ -478,9 +478,9 @@ services:
       - python3
       - /opt/config/wrapper.py
       - --genesis-retry-delay=20
-      - --slot=64
+      - --slot=65
       - --slot-retry-delay=120
-      - 10.0.20.4:8000
+      - 10.0.20.6:8002
       - /lighthouse/scripts/local_testnet/workload.py
 
 networks:

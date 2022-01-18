@@ -10,4 +10,6 @@ ganache-cli \
 	--port 8545 \
 	--blockTime 3 \
 	--networkId "$NETWORK_ID" \
-	--chainId "$NETWORK_ID"
+	--chainId "$NETWORK_ID" \
+	--quiet
+
